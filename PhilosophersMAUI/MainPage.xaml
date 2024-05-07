@@ -3,8 +3,84 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PhilosophersMAUI.MainPage"
              Title="Philosophers Table UI">
+    <ScrollView>
+        <Grid ColumnDefinitions="1.8*, *"
+              RowDefinitions="*, Auto"
+              x:Name="mainLayout">
 
-    <Grid ColumnDefinitions="2*, *"
-          x:Name="mainLayout">
-    </Grid>
+            <BoxView
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.RowSpan="2">
+                <BoxView.Background>
+                    <LinearGradientBrush EndPoint="1,0">
+                        <GradientStop Color="White"
+                                    Offset="0.3" />
+                        <GradientStop Color="Black"
+                                    Offset="1.0" />
+                    </LinearGradientBrush>
+                </BoxView.Background>
+            </BoxView>
+
+            <VerticalStackLayout
+                x:Name="functionalStack"
+                Grid.Column="0"
+                Grid.Row="0"
+                Margin="50"
+                VerticalOptions="Center">
+            </VerticalStackLayout>
+
+            <Button
+                Text="Iterate"
+                BackgroundColor="Black"
+                HeightRequest="75"
+                WidthRequest="150"
+                CornerRadius="30"
+                Grid.Column="0"
+                Grid.Row="1"
+                Margin="35">
+            </Button>
+
+            <BoxView
+                Grid.Row="0"
+                Grid.Column="1"
+                Grid.RowSpan="2"
+                BackgroundColor="Black">
+            </BoxView>
+
+            <VerticalStackLayout
+                x:Name="descriptionStack"
+                Grid.Column="1"
+                Grid.Row="0"
+                BackgroundColor="Black">
+                <Label
+                    Text="Title"
+                    TextColor="White"
+                    FontSize="36"
+                    FontAttributes="Bold"
+                    Margin="35,35,35,0">
+                </Label>
+
+                <Label
+                    Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                    FontSize="18"
+                    TextColor="White"
+                    Margin="35,35,35,0"
+                    MaximumHeightRequest="600">
+                </Label>
+            </VerticalStackLayout>
+
+            <Button
+                Text="Load DLL"
+                TextColor="White"
+                BackgroundColor="Blue"
+                HeightRequest="75"
+                WidthRequest="150"
+                CornerRadius="30"
+                Grid.Column="1"
+                Grid.Row="1"
+                Margin="35">
+            </Button>
+        </Grid>
+    </ScrollView>
 </ContentPage>

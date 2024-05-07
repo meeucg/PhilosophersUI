@@ -4,7 +4,7 @@ using Contracts;
 public class TableUI
 {
     public delegate void Action(object? sender, int buttonId);
-    public event Action action;
+    public event Action? action;
 
     private Button[] buttons;
     private Button[] forks;
@@ -12,6 +12,7 @@ public class TableUI
 
     public Layout GetLayout { get => layout; }
     public int PhilosophersCount { get; private set; }
+    public States[] states { get; private set; }
 
     EventHandler OnClicked(int buttonId)
     {
@@ -37,6 +38,7 @@ public class TableUI
     public TableUI(int philosophersCount, int buttonSize, int forkSize, int layoutSize)
     {
         PhilosophersCount = philosophersCount;
+        states = new States[PhilosophersCount];
         buttons = new Button[philosophersCount];
         forks = new Button[philosophersCount];
 
@@ -46,7 +48,10 @@ public class TableUI
             { 
                 HeightRequest = buttonSize,
                 WidthRequest = buttonSize,
-                CornerRadius = buttonSize
+                CornerRadius = buttonSize,
+                BackgroundColor = Themes.CurrentTheme[0],
+                BorderWidth = 15,
+                BorderColor = Themes.CurrentTheme[0]
             };
             buttons[i].Clicked += OnClicked(i);
             forks[i] = new Button()
@@ -54,7 +59,8 @@ public class TableUI
                 HeightRequest = forkSize,
                 WidthRequest = forkSize,
                 CornerRadius = forkSize,
-                IsEnabled = false
+                IsEnabled = false,
+                BackgroundColor = Themes.CurrentTheme[2],
             };
         }
         layout = GenerateLayout(layoutSize);
